@@ -4,7 +4,7 @@ on:
   # ⚠️ 注意：如果你是通过 Fork 来的，你的主分支可能叫 'master' 而不是 'main'
   # 请看你的 GitHub 仓库左上角显示的分支名，如果是 master，请把下面这行改为 [ master ]
   push:
-    branches: [ master, main ] 
+    branches: [ master ] 
   
   # 允许手动触发
   workflow_dispatch:
