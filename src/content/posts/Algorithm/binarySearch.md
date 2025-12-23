@@ -1,15 +1,15 @@
 ---
 title: binarySearch.md
 published: 2025-12-23
-description: ''
-image: ''
-tags: [C++, Algorithm, Binary Search, Data Structures]
-category: '算法与数据结构'
+description: "Comprehensive guide to Binary Search in C++ with multiple scenarios and implementations."
+pinned: true
+image: '../images/binarySearchCover.png'
+tags: ["C++", "Algorithm"]
+category: "Algorithm"
 draft: false 
 lang: ''
 author: 'Summer Flame 🔥'
-slug: binary-search
-date: 2024-06-10T00:00:00.000Z
+# slug: binary-search
 ---
 # 🎯 二分查找完全掌握手册 (五大场景 + 多种写法详解)
 
