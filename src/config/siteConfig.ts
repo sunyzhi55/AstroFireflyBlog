@@ -6,19 +6,16 @@ import { fontConfig } from "./fontConfig";
 const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
-	title: "Firefly",
-	subtitle: "Demo site",
-	site_url: "https://firefly.cuteleaf.cn",
+	title: "Summer Flame 🔥",
+	subtitle: "A Personal Blog Powered by Summer Fire 🔥",
+	site_url: "https://sunyzhi55.github.io/",
 	description:
 		"Firefly 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。",
 	keywords: [
-		"Firefly",
-		"Fuwari",
-		"Astro",
-		"ACGN",
-		"博客",
+		"个人博客",
 		"技术博客",
-		"静态博客",
+		"前端",
+		"随笔",
 	],
 
 	lang: SITE_LANG,
@@ -48,11 +45,11 @@ export const siteConfig: SiteConfig = {
 		value: "/assets/images/LiuYingPure3.svg",
 		alt: "🍀",
 	},
-	navbarTitle: "Firefly", // 导航栏标题，可以设置为与 title 不同的值，如果不设置则使用 title
+	navbarTitle: "Summer Flame 🔥", // 导航栏标题，可以设置为与 title 不同的值，如果不设置则使用 title
 	navbarWidthFull: false, // 全宽导航栏，导航栏是否占满屏幕宽度，true：占满，false：不占满
 
 	// 站点开始日期，用于统计运行天数
-	siteStartDate: "2025-01-01", // 请修改为你的站点实际开始日期，格式：YYYY-MM-DD
+	siteStartDate: "2025-12-23", // 请修改为你的站点实际开始日期，格式：YYYY-MM-DD
 
 	// bangumi配置
 	bangumi: {
@@ -122,20 +119,30 @@ export const siteConfig: SiteConfig = {
 				// 主页显示自定义文本（全局开关）
 				enable: true,
 				// 主页横幅主标题
-				title: "Lovely firefly!",
+				title: "Embrace the Flame",
 				// 主页横幅副标题
 				subtitle: [
-					"In Reddened Chrysalis, I Once Rest",
-					"From Shattered Sky, I Free Fall",
-					"Amidst Silenced Stars, I Deep Sleep",
-					"Upon Lighted Fyrefly, I Soon Gaze",
-					"From Undreamt Night, I Thence Shine",
-					"In Finalized Morrow, I Full Bloom",
+					"Engulfed in Radiant Light",
+					"Burning with Passion's Might",
+					"Flickering Dreams Take Flight",
+					"Igniting Souls in Endless Night",
+					"Where Shadows Dance with Fire",
+					"Embers of Hope Ascend Higher",
+					"Through the Ashes, I Arise",
+					"Chasing Stars Beyond the Skies",
+					"With Fiery Heart, I Strive",
+					"Blazing Trails, I Survive",
+					// "In Reddened Chrysalis, I Once Rest",
+					// "From Shattered Sky, I Free Fall",
+					// "Amidst Silenced Stars, I Deep Sleep",
+					// "Upon Lighted Fyrefly, I Soon Gaze",
+					// "From Undreamt Night, I Thence Shine",
+					// "In Finalized Morrow, I Full Bloom",
 				],
 				typewriter: {
 					//打字机开启 → 循环显示所有副标题
 					//打字机关闭 → 每次刷新随机显示一条副标题
-					enable: false, // 启用副标题打字机效果
+					enable: true, // 启用副标题打字机效果
 					speed: 100, // 打字速度（毫秒）
 					deleteSpeed: 50, // 删除速度（毫秒）
 					pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
