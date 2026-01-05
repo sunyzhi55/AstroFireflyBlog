@@ -5,10 +5,10 @@ export const profileConfig: ProfileConfig = {
 	avatar: "/assets/images/avatar.webp",
 
 	// 名字
-	name: "Firefly",
+	name: "Flame 🔥",
 
 	// 个人签名
-	bio: "Hello, I'm Firefly.",
+	bio: "Live life to the fullest.",
 
 	// 链接配置
 	// 已经预装的图标集：fa6-brands，fa6-regular，fa6-solid，material-symbols，simple-icons

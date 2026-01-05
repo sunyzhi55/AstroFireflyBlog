@@ -1,47 +1,45 @@
-name: Deploy to Pages Branch
+name: Deploy to GitHub Pages
 
 on:
-  # 每次推送到 `master` 分支时触发这个"工作流程"
-  # 如果你使用了别的分支名，请按需将 `master` 替换成你的分支名
+  # ⚠️ 注意：如果你是通过 Fork 来的，你的主分支可能叫 'master' 而不是 'main'
+  # 请看你的 GitHub 仓库左上角显示的分支名，如果是 master，请把下面这行改为 [ master ]
   push:
-    branches: [ master ]
-  # 允许你在 GitHub 上的 Actions 标签中手动触发此"工作流程"
+    branches: [ master ] 
+  
+  # 允许手动触发
   workflow_dispatch:
 
-# 需要写入权限来推送到pages分支
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9.14.4
-          run_install: false
-          
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-      
-      - name: Build site
-        run: pnpm run build
 
-      - name: Create .nojekyll file
-        run: touch dist/.nojekyll
-      
-      - name: Deploy to pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: pages # 部署到pages分支
-          folder: dist # Astro默认构建输出目录
-          clean: true # 清理目标分支中的旧文件
+      # 使用 Astro 官方的 Action，它会自动检测你用的是 pnpm 还是 npm
+      # 并且会自动读取 astro.config.mjs 进行构建
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+        # with:
+          # path: . # 如果你的 astro 项目不在根目录，可以在这里指定
+          # node-version: 20 # 默认使用最新稳定版，通常不需要手动指定
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
