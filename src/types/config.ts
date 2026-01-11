@@ -28,6 +28,11 @@ export type SiteConfig = {
 	// 站点开始日期，用于计算运行天数
 	siteStartDate?: string; // 格式: "YYYY-MM-DD"
 
+	// 提醒框配置
+	rehypeCallouts: {
+		theme: "github" | "obsidian" | "vitepress";
+	};
+
 	// 添加bangumi配置
 	bangumi?: {
 		userId?: string; // Bangumi用户ID
@@ -83,7 +88,8 @@ export type SiteConfig = {
 
 	// 统计分析
 	analytics?: {
-		clarityId?: string; // Microsoft Clarity ID
+		googleAnalyticsId?: string; // Google Analytics ID
+		microsoftClarityId?: string; // Microsoft Clarity ID
 	};
 };
 
@@ -113,35 +119,14 @@ export type NavBarLink = {
 
 export enum NavBarSearchMethod {
 	PageFind = 0,
-	MeiliSearch = 1,
 }
-
-/**
- * MeiliSearch配置
- *
- * @property INDEX_NAME MeiliSearch索引名称
- * @property CONTENT_DIR 需要被索引的内容目录
- * @property MEILI_HOST MeiliSearch服务器地址
- * @property PUBLIC_MEILI_HOST 公共MeiliSearch服务器地址（前端使用）
- * @property PUBLIC_MEILI_SEARCH_KEY 公共MeiliSearch搜索密钥（前端使用）
- */
-export type MeiliSearchConfig = {
-	INDEX_NAME: string;
-	CONTENT_DIR: string;
-	MEILI_HOST: string;
-	PUBLIC_MEILI_HOST: string;
-	PUBLIC_MEILI_SEARCH_KEY: string;
-};
 
 export type NavBarSearchConfig = {
 	method: NavBarSearchMethod;
-	meiliSearchConfig?: MeiliSearchConfig;
 };
 
 export type NavBarConfig = {
 	links: (NavBarLink | LinkPreset)[];
-	searchMethod?: NavBarSearchMethod;
-	meiliSearchConfig?: MeiliSearchConfig;
 };
 
 export type ProfileConfig = {
@@ -361,6 +346,7 @@ export type WidgetComponentConfig = {
 export type SidebarLayoutConfig = {
 	enable: boolean; // 是否启用侧边栏
 	position: "left" | "both"; // 侧边栏位置：左侧或双侧
+	showRightSidebarOnPostPage?: boolean; // 当position为left时，是否在文章详情页显示右侧边栏
 	leftComponents: WidgetComponentConfig[]; // 左侧边栏组件配置列表
 	rightComponents: WidgetComponentConfig[]; // 右侧边栏组件配置列表
 	defaultAnimation: {
@@ -541,10 +527,6 @@ export type BackgroundWallpaperConfig = {
 						desktop: boolean; // 桌面端是否启用波浪动画效果
 						mobile: boolean; // 移动端是否启用波浪动画效果
 				  }; // 是否启用波浪动画效果，支持布尔值或分别设置桌面端和移动端
-			performance?: {
-				quality: "high" | "medium" | "low"; // 渲染质量：high=高质量，medium=中等质量，low=低质量
-				hardwareAcceleration: boolean; // 是否启用硬件加速
-			}; // 波浪效果性能优化配置
 		};
 	};
 	// 全屏透明覆盖模式特有配置
